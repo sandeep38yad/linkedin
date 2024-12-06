@@ -42,31 +42,31 @@ class Test_003_Jobsearch_Qa:
     #         self.jb.collect_details("qa", keyword, count)
     #         # result = self.jb.open_job_page()
 
-    # def test_job_availibility_intern(self, browser_setup):
-    #     logger.info("*********************Test_003_Jobsearch**************************************")
-    #     logger.info("Checking opening of job page for internship")
-    #     self.driver = browser_setup
-    #     self.jb = jobs(self.driver)
-    #     keywords = ReadConfig.getkeyword("intern").split(",")
-    #     for keyword in keywords:
-    #         count = 0
-    #         # count = self.jb.send_keywords_in_searchbar(keyword)
-    #         count = self.jb.find_no_of_jobs("intern", keyword)
-    #         print(f'Total count {count}')
-    #         self.jb.collect_details("intern", keyword, count)
-
-    def test_job_availibility_dev(self, browser_setup):
+    def test_job_availibility_intern(self, browser_setup):
         logger.info("*********************Test_003_Jobsearch**************************************")
-        logger.info("Checking opening of job page for dev")
+        logger.info("Checking opening of job page for internship")
         self.driver = browser_setup
         self.jb = jobs(self.driver)
-        keywords = ReadConfig.getkeyword("developer").split(",")
+        keywords = ReadConfig.getkeyword("intern").split(",")
         for keyword in keywords:
             count = 0
-            count = self.jb.send_keywords_in_searchbar(keyword)
+            # count = self.jb.send_keywords_in_searchbar(keyword)
+            count = self.jb.find_no_of_jobs("intern", keyword)
             print(f'Total count {count}')
-            # self.jb.job_count()
-            self.jb.collect_details("developer", keyword, count)
+            self.jb.collect_details("intern", keyword, count)
+
+    # def test_job_availibility_dev(self, browser_setup):
+    #     logger.info("*********************Test_003_Jobsearch**************************************")
+    #     logger.info("Checking opening of job page for dev")
+    #     self.driver = browser_setup
+    #     self.jb = jobs(self.driver)
+    #     keywords = ReadConfig.getkeyword("developer").split(",")
+    #     for keyword in keywords:
+    #         count = 0
+    #         count = self.jb.send_keywords_in_searchbar(keyword)
+    #         print(f'Total count {count}')
+    #         # self.jb.job_count()
+    #         self.jb.collect_details("developer", keyword, count)
     #
     # def test_job_availibility_devops(self, browser_setup):
     #     logger.info("*********************Test_003_Jobsearch**************************************")

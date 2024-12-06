@@ -246,7 +246,7 @@ class jobs:
     def insert_doc_in_db(self, title, min_exp, company, loc, apply_link, full_jd):
         try:
             if not db_ops.check_availability("main", {'apply_link': apply_link}):
-                if title and min_exp and company and apply_link:
+                if title and company and apply_link:
                     document = {}
                     document['company'] = company
                     document['title'] = title
@@ -410,10 +410,11 @@ class jobs:
                             self.insert_company_details(company, follower_count, industry)
                             if industry and 'consulting' not in industry.lower() and 'e-learning' not in industry.lower():
                                 self.insert_doc_in_db(title, min_exp, company, loc, apply_link, jd)
-                    else:
-                        if industry and follower_count and apply_link and 'internshala' not in apply_link.lower():
+
+                    if category.lower() == 'intern' and 'internshala' not in apply_link.lower():
+                        if industry and follower_count and apply_link:
                             self.insert_company_details(company, follower_count, industry)
-                            if industry and 'consulting' not in industry.lower() and 'e-learning' not in industry.lower():
+                            if 'consulting' not in industry.lower() and 'e-learning' not in industry.lower():
                                 self.insert_doc_in_db(title, min_exp, company, loc, apply_link, jd)
 
                 except StaleElementReferenceException:
